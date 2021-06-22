@@ -93,19 +93,22 @@ function openImageGallery(evt) {
   }  
 
   refs.lightbox.classList.add('is-open');
-  refs.image.src = evt.target.dataset.source;
-  refs.image.alt = evt.target.alt;
+  formDescription(evt.target.dataset.source, evt.target.alt);
   document.addEventListener('keydown', onClickEsc);
 }
 
 
 function closeImageGallery() {
   refs.lightbox.classList.remove('is-open');
-  refs.image.src = '';
-  refs.image.alt = '';
+  formDescription();
 }
 
 function onClickEsc(evt) {
   if (evt.code === 'Escape') 
     closeImageGallery();
+}
+
+function formDescription(src = '', alt = '') {
+  refs.image.src = src;
+  refs.image.alt = alt;
 }
